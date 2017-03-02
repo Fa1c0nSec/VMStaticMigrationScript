@@ -19,8 +19,11 @@ Requests will be placed in their own branch for review and testing. Therefore, b
 About Author
 ---------------------------------------
 Fa1c0n.
+
 A geek that likes Apple products.
+
 Personal blog: http://www.fa1c0n.cn/
+
 VMStaticMigrationScript blog address: http://t.cn/Rixlhox
 
 
