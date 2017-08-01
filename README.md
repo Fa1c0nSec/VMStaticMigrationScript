@@ -1,7 +1,7 @@
 VMStaticMigrationScript
 ========
 
-VMStaticMigrationScript released under GPL v3.
+VMStaticMigrationScript released under GPL v2.
 
 What is VMStaticMigrationScript
 --------------------------------------
