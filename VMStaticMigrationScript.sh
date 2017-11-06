@@ -5,10 +5,10 @@ echo "========================================================"
 echo "==== Powered and Maintaince By Fa1c0n(i@fa1c0n.com). ==="
 echo "========================================================"
 read -p "Please Input Domain Name to Migrate: " -s domainName
-echo "========================================================\n"
+echo "========================================================"
 cd ~/
 echo Preparing VMs basic files, please wait...
-echo "========================================================\n"
+echo "========================================================"
 mkdir $domainName > /dev/null
 virsh dumpxml $domainName >  ~/$domainName/$domainName.xml
 
