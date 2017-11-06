@@ -1,8 +1,14 @@
 #!/bin/bash
-# - License: GPL v3.
+echo "========================================================"
+echo "============ VM Static Domain Migration Script ========="
+echo "========================================================"
+echo "==== Powered and Maintaince By Fa1c0n(i@fa1c0n.com). ==="
+echo "========================================================"
 read -p "Please Input Domain Name to Migrate: " -s domainName
+echo "========================================================\n"
 cd ~/
 echo Preparing VMs basic files, please wait...
+echo "========================================================\n"
 mkdir $domainName > /dev/null
 virsh dumpxml $domainName >  ~/$domainName/$domainName.xml
 
@@ -30,17 +36,30 @@ then
 else
         echo $domainName is not exist. Please check again.
 fi
-echo VM Files Preparing finished.
+echo "VM Files Preparing finished."
+echo "====================================================="
 read -p "Please Input The Remote Host IP: " -s remotehostIP
+echo "====================================================="
 read -p "Please Input Remote Host Username: " -s remotehostUsername
+echo "====================================================="
 echo If needed, you need to input remoteHost user password.
-dircreate="mkdir ~\/"$domainName
+echo "====================================================="
+dircreate="sudo mkdir \/usr\/local\/"$domainName
+dirpriv="sudo chmod -R 777 \/usr\/local\/"$domainName
 softinstall="sudo apt-get install libvirt-bin kvm qemu virtinst virt-manager virt-viewer"
-vmregister="virsh define ~\/"$domainName"\/"$domainName".xml"
+vmregister="sudo virsh define \/usr\/local\/"$domainName"\/"$domainName".xml"
 ssh -t -p 22 $remotehostUsername@$remotehostIP $dircreate
-scp ~/$domainName/* $remotehostUsername@$remotehostIP:~/$domainName
-echo Register Remote Host VMs...
+ssh -t -p 22 $remotehostUsername@$remotehostIP $dirpriv
+scp ~/$domainName/* $remotehostUsername@$remotehostIP:/usr/local/$domainName
+echo "====================================================="
+echo "===== Register Remote Host VMs... "
+echo "====================================================="
 ssh -t -p 22 $remotehostUsername@$remotehostIP $softinstall
 ssh -t -p 22 $remotehostUsername@$remotehostIP $vmregister
-echo VMs Static Migration Finished.
+echo "====================================================="
+echo "===== VMs Static Migration Finished. Enjoy!"
+echo "===== Maintaince: Fa1c0n. +(86)156-7027-2720"
+echo "===== License: GPL v2 Free Software"
+echo "====================================================="
+
 
